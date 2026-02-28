@@ -1,403 +1,531 @@
-<html lang="en" vid="0"><head vid="1">
-    <meta charset="UTF-8" vid="2">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+<!DOCTYPE html>
+<html lang="en" vid="0">
+  <head vid="1">
+    <meta charset="UTF-8" vid="2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3" />
     <title vid="4">Seedling - Every Student Can Grow</title>
+
+    <meta
+      name="google-site-verification"
+      content="qRgSTR9EPI7JBN2pGr_U3DwP-wDpU1A7irLLkR_ZK7E"
+    />
+
     <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+
+    <script>
+      // Change this once, it updates all buttons/links
+      const APP_URL = "https://seedlingapp.vercel.app/";
+    </script>
+
     <style vid="6">
-        :root {
-            --bg-page: #FCFBF7;
-            --bg-card: #F5F1E6;
-            --bg-card-light: #FFFFFF;
-            --border-card: #E6E1D1;
-            --text-primary: #1A1A1A;
-            --text-secondary: #5C5C5C;
-            --text-tertiary: #888888;
-            --color-tree: #4F6D46;
-            --color-sapling: #7D8C55;
-            --color-soil: #8B7355;
-            --color-progress-bg: #EBE7DA;
-            --font-serif: 'Georgia', 'Times New Roman', serif;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --shadow-soft: 0 4px 20px rgba(79, 109, 70, 0.08);
-            --shadow-card: 0 2px 8px rgba(0,0,0,0.02);
-        }
+      :root {
+        --bg-page: #fcfbf7;
+        --bg-card: #f5f1e6;
+        --bg-card-light: #ffffff;
+        --border-card: #e6e1d1;
+        --text-primary: #1a1a1a;
+        --text-secondary: #5c5c5c;
+        --text-tertiary: #888888;
+        --color-tree: #4f6d46;
+        --color-sapling: #7d8c55;
+        --color-soil: #8b7355;
+        --color-progress-bg: #ebe7da;
+        --font-serif: "Georgia", "Times New Roman", serif;
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        --shadow-soft: 0 4px 20px rgba(79, 109, 70, 0.08);
+        --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.02);
+      }
 
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            -webkit-font-smoothing: antialiased;
-        }
+      body {
+        background-color: var(--bg-page);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-serif);
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-serif);
+      }
 
-        .text-tree { color: var(--color-tree); }
-        .bg-tree { background-color: var(--color-tree); }
-        .text-secondary { color: var(--text-secondary); }
-        .bg-card { background-color: var(--bg-card); }
-        .border-card { border-color: var(--border-card); }
+      .text-tree {
+        color: var(--color-tree);
+      }
+      .bg-tree {
+        background-color: var(--color-tree);
+      }
+      .text-secondary {
+        color: var(--text-secondary);
+      }
+      .bg-card {
+        background-color: var(--bg-card);
+      }
+      .border-card {
+        border-color: var(--border-card);
+      }
 
-        .btn-primary {
-            background-color: var(--color-tree);
-            color: white;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(79, 109, 70, 0.25);
-        }
+      .btn-primary {
+        background-color: var(--color-tree);
+        color: white;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(79, 109, 70, 0.25);
+      }
 
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--border-card);
-            color: var(--color-tree);
-            transition: all 0.2s;
-        }
-        .btn-secondary:hover {
-            border-color: var(--color-tree);
-            background-color: #F0F5ED;
-        }
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid var(--border-card);
+        color: var(--color-tree);
+        transition: all 0.2s;
+      }
+      .btn-secondary:hover {
+        border-color: var(--color-tree);
+        background-color: #f0f5ed;
+      }
 
-        .card-shadow {
-            box-shadow: var(--shadow-soft);
-        }
+      .card-shadow {
+        box-shadow: var(--shadow-soft);
+      }
 
-       
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
         }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        50% {
+          transform: translateY(-10px);
         }
-        .animate-float-delayed {
-            animation: float 7s ease-in-out infinite 1s;
+        100% {
+          transform: translateY(0px);
         }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-float-delayed {
+        animation: float 7s ease-in-out infinite 1s;
+      }
 
-        .progress-bar {
-            transition: width 1s ease-out;
-        }
+      .progress-bar {
+        transition: width 1s ease-out;
+      }
     </style>
-</head>
-<body class="w-full min-h-screen flex flex-col" vid="7">
+  </head>
 
-   
+  <body class="w-full min-h-screen flex flex-col" vid="7">
     <nav class="w-full px-6 py-5 flex items-center justify-between max-w-7xl mx-auto" vid="8">
-        <div class="flex items-center gap-3" vid="9">
-            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center border border-[#E6E1D1]" vid="10">
-                <svg width="24" height="24" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" vid="11">
-                    <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="12"></rect>
-                    <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="13"></ellipse>
-                    <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="14"></ellipse>
-                    <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="15"></ellipse>
-                    <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="16"></ellipse>
-                </svg>
-            </div>
-            <span class="font-serif text-2xl font-bold text-[#1A1A1A]" vid="17">Seedling</span>
+      <div class="flex items-center gap-3" vid="9">
+        <div
+          class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center border border-[#E6E1D1]"
+          vid="10"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 52 52"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            vid="11"
+          >
+            <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="12"></rect>
+            <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="13"></ellipse>
+            <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="14"></ellipse>
+            <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="15"></ellipse>
+            <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="16"></ellipse>
+          </svg>
         </div>
+        <span class="font-serif text-2xl font-bold text-[#1A1A1A]" vid="17">Seedling</span>
+      </div>
 
-        <div class="hidden md:flex items-center gap-8 text-[#5C5C5C] font-medium text-sm" vid="18">
-        </div>
+      <div class="hidden md:flex items-center gap-8 text-[#5C5C5C] font-medium text-sm" vid="18"></div>
 
-        <div class="flex items-center gap-4" vid="19">
-            <a href="https://seedling-app-bay.vercel.app/" class="hidden md:block font-semibold text-[#4F6D46] text-sm hover:opacity-80" vid="20">Log in</a>
-            <button class="btn-primary px-5 py-2.5 rounded-xl font-semibold text-sm" vid="21" onclick="window.location.href='https://seedling-app-bay.vercel.app/'">Get Started</button>
-        </div>
+      <div class="flex items-center gap-4" vid="19">
+        <a
+          href="https://seedlingapp.vercel.app/"
+          class="hidden md:block font-semibold text-[#4F6D46] text-sm hover:opacity-80"
+          rel="noopener noreferrer"
+          vid="20"
+          >Log in</a
+        >
+        <button
+          class="btn-primary px-5 py-2.5 rounded-xl font-semibold text-sm"
+          vid="21"
+          onclick="window.location.href=APP_URL"
+        >
+          Get Started
+        </button>
+      </div>
     </nav>
 
-   
     <header class="w-full pt-16 pb-24 px-6 relative overflow-hidden" vid="22">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center" vid="23">
-           
-            <div class="z-10 relative" vid="24">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F0F5ED] border border-[#E6E1D1] text-[#4F6D46] text-xs font-bold uppercase tracking-wider mb-6" vid="25">
-                    <span class="w-2 h-2 rounded-full bg-[#4F6D46]" vid="26"></span>
-                    New: Gap Analysis Tools
-                </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-[#1A1A1A]" vid="27">
-                    Watch your class <span class="text-[#4F6D46]" vid="28">flourish.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-[#5C5C5C] leading-relaxed mb-8 max-w-md" vid="29">
-                    Track progress, identify learning gaps, and assign targeted exercises to help every student flourish at their own pace.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4" vid="30">
-                    <button class="btn-primary px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2" vid="31" onclick="window.location.href='https://seedling-app-bay.vercel.app/'">
-                        Start Free Trial
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="32"><path d="M5 12h14M12 5l7 7-7 7" vid="33"></path></svg>
-                    </button>
-                    <button class="btn-secondary px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2" onclick="window.location.href='https://seedling-app-bay.vercel.app/'" vid="34">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="35"><polygon points="5 3 19 12 5 21 5 3" vid="36"></polygon></svg>
-                        Watch Demo
-                    </button>
-                </div>
-                <div class="mt-8 flex items-center gap-4 text-sm text-[#888888]" vid="37">
-                    <div class="flex -space-x-2" vid="38">
-                        <!-- Teacher A -->
-                        <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#DDE5D9] flex items-center justify-center" vid="39">
-                            <span class="text-xs font-bold text-[#4F6D46]" vid="40">S</span>
-                        </div>
-                        <!-- Teacher J -->
-                        <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#E8EED4] flex items-center justify-center" vid="41">
-                            <span class="text-xs font-bold text-[#5A6E35]" vid="42">J</span>
-                        </div>
-                        <!-- Teacher M -->
-                        <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#C8DDB8] flex items-center justify-center" vid="43">
-                            <span class="text-xs font-bold text-[#3A5C2A]" vid="44">M</span>
-                        </div>
-                    </div>
-                    <p vid="45">Trusted by 10,000+ teachers</p>
-                </div>
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center" vid="23">
+        <div class="z-10 relative" vid="24">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F0F5ED] border border-[#E6E1D1] text-[#4F6D46] text-xs font-bold uppercase tracking-wider mb-6"
+            vid="25"
+          >
+            <span class="w-2 h-2 rounded-full bg-[#4F6D46]" vid="26"></span>
+            New: Gap Analysis Tools
+          </div>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-[#1A1A1A]" vid="27">
+            Watch your class <span class="text-[#4F6D46]" vid="28">flourish.</span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-[#5C5C5C] leading-relaxed mb-8 max-w-md" vid="29">
+            Track progress, identify learning gaps, and assign targeted exercises to help every student
+            flourish at their own pace.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4" vid="30">
+            <button
+              class="btn-primary px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2"
+              vid="31"
+              onclick="window.location.href=APP_URL"
+            >
+              Start Free Trial
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="32">
+                <path d="M5 12h14M12 5l7 7-7 7" vid="33"></path>
+              </svg>
+            </button>
+
+            <button
+              class="btn-secondary px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2"
+              onclick="window.location.href=APP_URL"
+              vid="34"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="35">
+                <polygon points="5 3 19 12 5 21 5 3" vid="36"></polygon>
+              </svg>
+              Watch Demo
+            </button>
+          </div>
+
+          <div class="mt-8 flex items-center gap-4 text-sm text-[#888888]" vid="37">
+            <div class="flex -space-x-2" vid="38">
+              <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#DDE5D9] flex items-center justify-center" vid="39">
+                <span class="text-xs font-bold text-[#4F6D46]" vid="40">S</span>
+              </div>
+              <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#E8EED4] flex items-center justify-center" vid="41">
+                <span class="text-xs font-bold text-[#5A6E35]" vid="42">J</span>
+              </div>
+              <div class="w-8 h-8 rounded-full border-2 border-[#FCFBF7] bg-[#C8DDB8] flex items-center justify-center" vid="43">
+                <span class="text-xs font-bold text-[#3A5C2A]" vid="44">M</span>
+              </div>
             </div>
-
-           
-            <div class="relative h-[600px] flex items-center justify-center" vid="46">
-               
-                <div class="absolute inset-0 bg-gradient-to-br from-[#F0F5ED] to-transparent rounded-full opacity-60 blur-3xl transform translate-x-12 translate-y-12" vid="47"></div>
-               
-               
-                <div class="relative z-10 w-64 h-64 md:w-80 md:h-80 bg-white rounded-full shadow-[0_8px_32px_rgba(79,109,70,0.1)] flex items-center justify-center animate-float" vid="48">
-                    <svg width="180" height="180" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" vid="49">
-                        <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="50"></rect>
-                        <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="51"></ellipse>
-                        <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="52"></ellipse>
-                        <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="53"></ellipse>
-                        <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="54"></ellipse>
-                        <ellipse cx="24" cy="15" rx="4" ry="3.5" fill="#92C463" opacity="0.7" vid="55"></ellipse>
-                    </svg>
-                </div>
-
-               
-                <div class="absolute top-20 -left-4 md:left-0 bg-[#F5F1E6] p-4 rounded-2xl border border-[#E6E1D1] shadow-lg w-64 animate-float-delayed" vid="56">
-                    <div class="flex justify-between items-center mb-3" vid="57">
-                        <span class="text-xs font-bold uppercase tracking-widest text-[#888888]" vid="58">Phonics</span>
-                        <span class="text-[#4F6D46] font-bold text-sm" vid="59">92%</span>
-                    </div>
-                    <div class="w-full h-2 bg-[#EBE7DA] rounded-full overflow-hidden" vid="60">
-                        <div class="h-full bg-[#7D8C55] rounded-full" style="width: 92%" vid="61"></div>
-                    </div>
-                </div>
-
-               
-                <div class="absolute bottom-32 -right-4 md:right-0 bg-[#FFFFFF] p-4 rounded-2xl border border-[#E6E1D1] shadow-lg w-64 animate-float" style="animation-delay: 1.5s;" vid="62">
-                    <div class="flex items-start gap-3" vid="63">
-                        <div class="w-10 h-10 rounded-full bg-[#FFF4E5] flex items-center justify-center flex-shrink-0 text-[#B85C00]" vid="64">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="65"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" vid="66"></path></svg>
-                        </div>
-                        <div vid="67">
-                            <div class="font-serif font-bold text-[#1A1A1A] text-lg" vid="68">2 Gaps Found</div>
-                            <div class="text-xs text-[#5C5C5C] mt-1" vid="69">Place Value &amp; Addition</div>
-                        </div>
-                    </div>
-                    <button class="mt-3 w-full py-2 bg-[#F0F5ED] text-[#4F6D46] text-xs font-bold rounded-lg hover:bg-[#E8F0E0] transition-colors" vid="70">
-                        View Recommendations
-                    </button>
-                </div>
-
-            </div>
+            <p vid="45">Trusted by 10,000+ teachers</p>
+          </div>
         </div>
+
+        <div class="relative h-[600px] flex items-center justify-center" vid="46">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-[#F0F5ED] to-transparent rounded-full opacity-60 blur-3xl transform translate-x-12 translate-y-12"
+            vid="47"
+          ></div>
+
+          <div
+            class="relative z-10 w-64 h-64 md:w-80 md:h-80 bg-white rounded-full shadow-[0_8px_32px_rgba(79,109,70,0.1)] flex items-center justify-center animate-float"
+            vid="48"
+          >
+            <svg width="180" height="180" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" vid="49">
+              <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="50"></rect>
+              <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="51"></ellipse>
+              <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="52"></ellipse>
+              <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="53"></ellipse>
+              <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="54"></ellipse>
+              <ellipse cx="24" cy="15" rx="4" ry="3.5" fill="#92C463" opacity="0.7" vid="55"></ellipse>
+            </svg>
+          </div>
+
+          <div
+            class="absolute top-20 -left-4 md:left-0 bg-[#F5F1E6] p-4 rounded-2xl border border-[#E6E1D1] shadow-lg w-64 animate-float-delayed"
+            vid="56"
+          >
+            <div class="flex justify-between items-center mb-3" vid="57">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#888888]" vid="58">Phonics</span>
+              <span class="text-[#4F6D46] font-bold text-sm" vid="59">92%</span>
+            </div>
+            <div class="w-full h-2 bg-[#EBE7DA] rounded-full overflow-hidden" vid="60">
+              <div class="h-full bg-[#7D8C55] rounded-full" style="width: 92%" vid="61"></div>
+            </div>
+          </div>
+
+          <div
+            class="absolute bottom-32 -right-4 md:right-0 bg-[#FFFFFF] p-4 rounded-2xl border border-[#E6E1D1] shadow-lg w-64 animate-float"
+            style="animation-delay: 1.5s"
+            vid="62"
+          >
+            <div class="flex items-start gap-3" vid="63">
+              <div class="w-10 h-10 rounded-full bg-[#FFF4E5] flex items-center justify-center flex-shrink-0 text-[#B85C00]" vid="64">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="65">
+                  <path
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    vid="66"
+                  ></path>
+                </svg>
+              </div>
+              <div vid="67">
+                <div class="font-serif font-bold text-[#1A1A1A] text-lg" vid="68">2 Gaps Found</div>
+                <div class="text-xs text-[#5C5C5C] mt-1" vid="69">Place Value &amp; Addition</div>
+              </div>
+            </div>
+            <button
+              class="mt-3 w-full py-2 bg-[#F0F5ED] text-[#4F6D46] text-xs font-bold rounded-lg hover:bg-[#E8F0E0] transition-colors"
+              vid="70"
+            >
+              View Recommendations
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
 
-   
     <section class="w-full py-12 border-y border-[#E6E1D1] bg-white" vid="71">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8" vid="72">
-            <div class="text-center" vid="73">
-                <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="74">15k+</div>
-                <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="75">Active Educators</div>
-            </div>
-            <div class="text-center" vid="76">
-                <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="77">1.2M</div>
-                <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="78">Exercises Completed</div>
-            </div>
-            <div class="text-center" vid="79">
-                <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="80">34%</div>
-                <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="81">Avg. Growth Rate</div>
-            </div>
-            <div class="text-center" vid="82">
-                <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="83">98%</div>
-                <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="84">Teacher Satisfaction</div>
-            </div>
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8" vid="72">
+        <div class="text-center" vid="73">
+          <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="74">15k+</div>
+          <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="75">Active Educators</div>
         </div>
+        <div class="text-center" vid="76">
+          <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="77">1.2M</div>
+          <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="78">Exercises Completed</div>
+        </div>
+        <div class="text-center" vid="79">
+          <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="80">34%</div>
+          <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="81">Avg. Growth Rate</div>
+        </div>
+        <div class="text-center" vid="82">
+          <div class="font-serif text-4xl font-bold text-[#4F6D46] mb-2" vid="83">98%</div>
+          <div class="text-sm font-bold uppercase tracking-wider text-[#888888]" vid="84">Teacher Satisfaction</div>
+        </div>
+      </div>
     </section>
 
-   
     <section class="w-full py-24 px-6 relative" vid="85">
-        <div class="max-w-7xl mx-auto" vid="86">
-            <div class="text-center mb-16 max-w-2xl mx-auto" vid="87">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#1A1A1A]" vid="88">Cultivate knowledge,<br vid="89">one skill at a time.</h2>
-                <p class="text-[#5C5C5C] text-lg" vid="90">Seedling gives you the tools to see exactly where your students are standing and what they need to grow next.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8" vid="91">
-               
-                <div class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300" vid="92">
-                    <div class="w-12 h-12 rounded-2xl bg-[#DDE5D9] flex items-center justify-center text-[#4F6D46] mb-6" vid="93">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="94"><path d="M18 20V10M12 20V4M6 20v-6" vid="95"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" vid="96">Real-time Progress</h3>
-                    <p class="text-[#5C5C5C] mb-8 flex-1" vid="97">Visualize mastery levels at a glance. Watch your class forest grow as students master new skills.</p>
-                   
-                   
-                    <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="98">
-                        <div class="flex justify-between items-center mb-4" vid="99">
-                            <span class="font-serif font-bold text-lg text-[#1A1A1A]" vid="100">Reading</span>
-                            <span class="bg-[#F0F5ED] text-[#4F6D46] text-xs font-bold px-2 py-1 rounded-full" vid="101">On Track</span>
-                        </div>
-                        <div class="space-y-3" vid="102">
-                            <div vid="103">
-                                <div class="flex justify-between text-xs font-medium mb-1" vid="104">
-                                    <span vid="105">Comprehension</span>
-                                    <span vid="106">78%</span>
-                                </div>
-                                <div class="h-1.5 bg-[#EBE7DA] rounded-full overflow-hidden" vid="107">
-                                    <div class="h-full bg-[#7D8C55] rounded-full" style="width: 78%" vid="108"></div>
-                                </div>
-                            </div>
-                            <div vid="109">
-                                <div class="flex justify-between text-xs font-medium mb-1" vid="110">
-                                    <span vid="111">Vocabulary</span>
-                                    <span vid="112">85%</span>
-                                </div>
-                                <div class="h-1.5 bg-[#EBE7DA] rounded-full overflow-hidden" vid="113">
-                                    <div class="h-full bg-[#7D8C55] rounded-full" style="width: 85%" vid="114"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-                <div class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300" vid="115">
-                    <div class="w-12 h-12 rounded-2xl bg-[#FFF4E5] flex items-center justify-center text-[#B85C00] mb-6" vid="116">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="117"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 3h.01" vid="118"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" vid="119">Instant Gap Detection</h3>
-                    <p class="text-[#5C5C5C] mb-8 flex-1" vid="120">Identify struggling students before they fall behind. Seedling highlights specific skill gaps instantly.</p>
-                   
-                   
-                    <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="121">
-                        <div class="flex items-center gap-3 mb-4" vid="122">
-                            <div class="w-8 h-8 rounded-full bg-[#F5E6E6] flex items-center justify-center text-xs font-bold text-[#B85C00]" vid="123">DM</div>
-                            <div vid="124">
-                                <div class="font-bold text-sm" vid="125">Dawood Malik</div>
-                                <div class="text-[10px] text-[#B85C00] font-bold uppercase" vid="126">Needs Attention</div>
-                            </div>
-                        </div>
-                        <div class="bg-[#FFF8F0] rounded-xl p-3 flex gap-3 border border-[#F2C890]" vid="127">
-                            <div class="text-lg" vid="128">📝</div>
-                            <div class="text-xs text-[#5C5C5C] leading-snug" vid="129">Focus on <strong class="text-[#7A5C3A]" vid="130">Place Value</strong> before moving to multi-digit addition.</div>
-                        </div>
-                    </div>
-                </div>
-
-               
-                <div class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300" vid="131">
-                    <div class="w-12 h-12 rounded-2xl bg-[#E8F0E0] flex items-center justify-center text-[#4F6D46] mb-6" vid="132">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="133"><path d="M9 11l3 3L22 4" vid="134"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" vid="135"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" vid="136">Targeted Exercises</h3>
-                    <p class="text-[#5C5C5C] mb-8 flex-1" vid="137">Assign personalized exercises to address specific gaps or challenge high achievers.</p>
-                   
-                   
-                    <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="138">
-                        <div class="space-y-2" vid="139">
-                            <div class="flex items-center gap-3 p-2 rounded-lg bg-[#F0F5ED] border border-[#DDE5D9]" vid="140">
-                                <div class="w-5 h-5 rounded bg-[#4F6D46] flex items-center justify-center text-white text-[10px]" vid="141">✓</div>
-                                <div vid="142">
-                                    <div class="text-xs font-bold text-[#1A1A1A]" vid="143">Base Ten Blocks</div>
-                                    <div class="text-[10px] text-[#5C5C5C]" vid="144">Conceptual</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 p-2 rounded-lg bg-[#F0F5ED] border border-[#DDE5D9]" vid="145">
-                                <div class="w-5 h-5 rounded bg-[#4F6D46] flex items-center justify-center text-white text-[10px]" vid="146">✓</div>
-                                <div vid="147">
-                                    <div class="text-xs font-bold text-[#1A1A1A]" vid="148">Number Lines</div>
-                                    <div class="text-[10px] text-[#5C5C5C]" vid="149">Fluency</div>
-                                </div>
-                            </div>
-                            <button class="w-full py-2 mt-1 bg-[#4F6D46] text-white text-xs font-bold rounded-lg" vid="150">Assign Bundle</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto" vid="86">
+        <div class="text-center mb-16 max-w-2xl mx-auto" vid="87">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#1A1A1A]" vid="88">
+            Cultivate knowledge,<br vid="89" />one skill at a time.
+          </h2>
+          <p class="text-[#5C5C5C] text-lg" vid="90">
+            Seedling gives you the tools to see exactly where your students are standing and what they need to grow next.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-8" vid="91">
+          <div
+            class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"
+            vid="92"
+          >
+            <div class="w-12 h-12 rounded-2xl bg-[#DDE5D9] flex items-center justify-center text-[#4F6D46] mb-6" vid="93">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="94">
+                <path d="M18 20V10M12 20V4M6 20v-6" vid="95"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" vid="96">Real-time Progress</h3>
+            <p class="text-[#5C5C5C] mb-8 flex-1" vid="97">
+              Visualize mastery levels at a glance. Watch your class forest grow as students master new skills.
+            </p>
+
+            <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="98">
+              <div class="flex justify-between items-center mb-4" vid="99">
+                <span class="font-serif font-bold text-lg text-[#1A1A1A]" vid="100">Reading</span>
+                <span class="bg-[#F0F5ED] text-[#4F6D46] text-xs font-bold px-2 py-1 rounded-full" vid="101">On Track</span>
+              </div>
+              <div class="space-y-3" vid="102">
+                <div vid="103">
+                  <div class="flex justify-between text-xs font-medium mb-1" vid="104">
+                    <span vid="105">Comprehension</span>
+                    <span vid="106">78%</span>
+                  </div>
+                  <div class="h-1.5 bg-[#EBE7DA] rounded-full overflow-hidden" vid="107">
+                    <div class="h-full bg-[#7D8C55] rounded-full" style="width: 78%" vid="108"></div>
+                  </div>
+                </div>
+                <div vid="109">
+                  <div class="flex justify-between text-xs font-medium mb-1" vid="110">
+                    <span vid="111">Vocabulary</span>
+                    <span vid="112">85%</span>
+                  </div>
+                  <div class="h-1.5 bg-[#EBE7DA] rounded-full overflow-hidden" vid="113">
+                    <div class="h-full bg-[#7D8C55] rounded-full" style="width: 85%" vid="114"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"
+            vid="115"
+          >
+            <div class="w-12 h-12 rounded-2xl bg-[#FFF4E5] flex items-center justify-center text-[#B85C00] mb-6" vid="116">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="117">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 3h.01" vid="118"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" vid="119">Instant Gap Detection</h3>
+            <p class="text-[#5C5C5C] mb-8 flex-1" vid="120">
+              Identify struggling students before they fall behind. Seedling highlights specific skill gaps instantly.
+            </p>
+
+            <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="121">
+              <div class="flex items-center gap-3 mb-4" vid="122">
+                <div class="w-8 h-8 rounded-full bg-[#F5E6E6] flex items-center justify-center text-xs font-bold text-[#B85C00]" vid="123">
+                  DM
+                </div>
+                <div vid="124">
+                  <div class="font-bold text-sm" vid="125">Dawood Malik</div>
+                  <div class="text-[10px] text-[#B85C00] font-bold uppercase" vid="126">Needs Attention</div>
+                </div>
+              </div>
+              <div class="bg-[#FFF8F0] rounded-xl p-3 flex gap-3 border border-[#F2C890]" vid="127">
+                <div class="text-lg" vid="128">📝</div>
+                <div class="text-xs text-[#5C5C5C] leading-snug" vid="129">
+                  Focus on <strong class="text-[#7A5C3A]" vid="130">Place Value</strong> before moving to multi-digit addition.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-[#F5F1E6] rounded-[32px] p-8 border border-[#E6E1D1] card-shadow flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"
+            vid="131"
+          >
+            <div class="w-12 h-12 rounded-2xl bg-[#E8F0E0] flex items-center justify-center text-[#4F6D46] mb-6" vid="132">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" vid="133">
+                <path d="M9 11l3 3L22 4" vid="134"></path>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" vid="135"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" vid="136">Targeted Exercises</h3>
+            <p class="text-[#5C5C5C] mb-8 flex-1" vid="137">
+              Assign personalized exercises to address specific gaps or challenge high achievers.
+            </p>
+
+            <div class="bg-white rounded-2xl p-4 border border-[#E6E1D1]" vid="138">
+              <div class="space-y-2" vid="139">
+                <div class="flex items-center gap-3 p-2 rounded-lg bg-[#F0F5ED] border border-[#DDE5D9]" vid="140">
+                  <div class="w-5 h-5 rounded bg-[#4F6D46] flex items-center justify-center text-white text-[10px]" vid="141">✓</div>
+                  <div vid="142">
+                    <div class="text-xs font-bold text-[#1A1A1A]" vid="143">Base Ten Blocks</div>
+                    <div class="text-[10px] text-[#5C5C5C]" vid="144">Conceptual</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-2 rounded-lg bg-[#F0F5ED] border border-[#DDE5D9]" vid="145">
+                  <div class="w-5 h-5 rounded bg-[#4F6D46] flex items-center justify-center text-white text-[10px]" vid="146">✓</div>
+                  <div vid="147">
+                    <div class="text-xs font-bold text-[#1A1A1A]" vid="148">Number Lines</div>
+                    <div class="text-[10px] text-[#5C5C5C]" vid="149">Fluency</div>
+                  </div>
+                </div>
+
+                <button class="w-full py-2 mt-1 bg-[#4F6D46] text-white text-xs font-bold rounded-lg" vid="150">
+                  Assign Bundle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-   
     <section class="w-full py-20 px-6 bg-[#E8F0E0] relative overflow-hidden" vid="151">
-        <div class="absolute top-0 left-0 w-64 h-64 bg-[#F0F5ED] rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2" vid="152"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10" vid="153">
-            <svg class="w-10 h-10 text-[#4F6D46] opacity-25 mx-auto mb-6" viewBox="0 0 32 32" fill="currentColor" vid="154">
-                <path d="M0 20Q0 12 8 8L10 11Q6 13 6 18H10V28H0ZM18 20Q18 12 26 8L28 11Q24 13 24 18H28V28H18Z" vid="155"></path>
-            </svg>
-            <blockquote class="font-serif text-2xl md:text-3xl font-medium leading-relaxed mb-8 text-[#1A1A1A]" vid="156">
-                "Seedling completely changed how I track reading fluency. Instead of spreadsheets, I have a beautiful garden that tells me exactly who needs help."
-            </blockquote>
-            <div class="flex items-center justify-center gap-4" vid="157">
-                <div class="w-12 h-12 rounded-full bg-[#FCFBF7] p-0.5 border border-[#E6E1D1]" vid="158">
-                     <div class="w-full h-full rounded-full bg-gradient-to-br from-[#E8F0E0] to-[#C8DDB8] flex items-center justify-center font-serif font-bold text-[#4F6D46]" vid="159">SM</div>
-                </div>
-                <div class="text-left" vid="160">
-                    <div class="font-bold text-[#1A1A1A]" vid="161">Sarah Mehmood</div>
-                    <div class="text-sm text-[#5C5C5C]" vid="162">2nd Grade Teacher</div>
-                </div>
+      <div class="absolute top-0 left-0 w-64 h-64 bg-[#F0F5ED] rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2" vid="152"></div>
+      <div class="max-w-4xl mx-auto text-center relative z-10" vid="153">
+        <svg class="w-10 h-10 text-[#4F6D46] opacity-25 mx-auto mb-6" viewBox="0 0 32 32" fill="currentColor" vid="154">
+          <path d="M0 20Q0 12 8 8L10 11Q6 13 6 18H10V28H0ZM18 20Q18 12 26 8L28 11Q24 13 24 18H28V28H18Z" vid="155"></path>
+        </svg>
+
+        <blockquote class="font-serif text-2xl md:text-3xl font-medium leading-relaxed mb-8 text-[#1A1A1A]" vid="156">
+          "Seedling completely changed how I track reading fluency. Instead of spreadsheets, I have a beautiful garden that tells me exactly who needs help."
+        </blockquote>
+
+        <div class="flex items-center justify-center gap-4" vid="157">
+          <div class="w-12 h-12 rounded-full bg-[#FCFBF7] p-0.5 border border-[#E6E1D1]" vid="158">
+            <div
+              class="w-full h-full rounded-full bg-gradient-to-br from-[#E8F0E0] to-[#C8DDB8] flex items-center justify-center font-serif font-bold text-[#4F6D46]"
+              vid="159"
+            >
+              SM
             </div>
+          </div>
+
+          <div class="text-left" vid="160">
+            <div class="font-bold text-[#1A1A1A]" vid="161">Sarah Mehmood</div>
+            <div class="text-sm text-[#5C5C5C]" vid="162">2nd Grade Teacher</div>
+          </div>
         </div>
+      </div>
     </section>
 
-   
     <section class="w-full py-24 px-6" vid="163">
-        <div class="max-w-5xl mx-auto  rounded-[40px] p-12 md:p-20 text-center  border-[#E6E1D1] relative overflow-hidden" vid="164">
-           
-            <!-- <svg class="absolute top-10 left-10 w-20 h-20 opacity-30" viewBox="0 0 52 52" fill="none" vid="165">
-                <rect x="23" y="34" width="6" height="14" rx="3" fill="#A8C49A" vid="166"></rect>
-                <ellipse cx="26" cy="26" rx="14" ry="13" fill="#A8C49A" vid="167"></ellipse>
-                <ellipse cx="26" cy="22" rx="11" ry="10" fill="#BED4B0" vid="168"></ellipse>
-                <ellipse cx="26" cy="18" rx="8" ry="7" fill="#CDE0C0" vid="169"></ellipse>
-            </svg> -->
-            <!-- <svg class="absolute bottom-10 right-10 w-24 h-24 text-[#DDE5D9] opacity-40" viewBox="0 0 52 52" fill="currentColor" vid="170">
-                <rect x="23" y="34" width="6" height="14" rx="3" fill="#C8DDB8" vid="171"></rect>
-                <ellipse cx="26" cy="46" rx="9" ry="3" fill="#B8CDA8" opacity="0.4" vid="172"></ellipse>
-                <ellipse cx="26" cy="26" rx="14" ry="13" fill="#C8DDB8" vid="173"></ellipse>
-                <ellipse cx="26" cy="22" rx="11" ry="10" fill="#D8EDCA" vid="174"></ellipse>
-                <ellipse cx="26" cy="18" rx="8" ry="7" fill="#E2F2D4" vid="175"></ellipse>
-            </svg> -->
+      <div class="max-w-5xl mx-auto rounded-[40px] p-12 md:p-20 text-center border-[#E6E1D1] relative overflow-hidden" vid="164">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 relative z-10 text-[#1A1A1A]" vid="176">
+          Ready to help your <br vid="177" />students flourish?
+        </h2>
 
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 relative z-10 text-[#1A1A1A]" vid="176">Ready to help your <br vid="177">students flourish?</h2>
-            <p class="text-lg text-[#5C5C5C] mb-10 max-w-xl mx-auto relative z-10" vid="178">Join thousands of teachers using Seedling to make data-driven decisions every day.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10" vid="179">
-                <button class="btn-primary px-8 py-4 rounded-2xl font-bold text-lg" onclick="window.location.href='https://seedling-app-bay.vercel.app/'" vid="180">Get Started for Free</button>
-                <button class="btn-secondary px-8 py-4 rounded-2xl font-bold text-lg bg-white" onclick="window.location.href='https://seedling-app-bay.vercel.app/'" vid="181">Schedule Demo</button>
-            </div>
+        <p class="text-lg text-[#5C5C5C] mb-10 max-w-xl mx-auto relative z-10" vid="178">
+          Join thousands of teachers using Seedling to make data-driven decisions every day.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10" vid="179">
+          <button class="btn-primary px-8 py-4 rounded-2xl font-bold text-lg" onclick="window.location.href=APP_URL" vid="180">
+            Get Started for Free
+          </button>
+
+          <button
+            class="btn-secondary px-8 py-4 rounded-2xl font-bold text-lg bg-white"
+            onclick="window.location.href=APP_URL"
+            vid="181"
+          >
+            Schedule Demo
+          </button>
         </div>
+      </div>
     </section>
 
-   
     <footer class="w-full bg-[#1A1A1A] text-white py-8 px-8 mt-auto" vid="182">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6" vid="183">
-            <div class="flex items-center gap-3" vid="184">
-                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center" vid="185">
-                    <svg width="16" height="16" viewBox="0 0 52 52" fill="none" vid="186">
-                        <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="187"></rect>
-                        <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="188"></ellipse>
-                        <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="189"></ellipse>
-                        <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="190"></ellipse>
-                        <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="191"></ellipse>
-                    </svg>
-                </div>
-                <span class="font-serif text-base font-bold" vid="192">Seedling</span>
-            </div>
-            <p class="text-xs text-gray-500" vid="193">© 2026 Seedling Academy Inc. All rights reserved.</p>
-            <div class="flex items-center gap-4" vid="194">
-                <a href="#" class="text-xs text-gray-400 hover:text-white transition-colors" vid="195">Privacy</a>
-                <a href="#" class="text-xs text-gray-400 hover:text-white transition-colors" vid="196">Terms</a>
-                <a href="#" class="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-colors text-xs" vid="197">𝕏</a>
-                <a href="#" class="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-colors text-xs" vid="198">in</a>
-            </div>
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6" vid="183">
+        <div class="flex items-center gap-3" vid="184">
+          <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center" vid="185">
+            <svg width="16" height="16" viewBox="0 0 52 52" fill="none" vid="186">
+              <rect x="23" y="34" width="6" height="12" rx="3" fill="#8B6340" vid="187"></rect>
+              <ellipse cx="26" cy="46" rx="9" ry="3" fill="#A0784A" opacity="0.3" vid="188"></ellipse>
+              <ellipse cx="26" cy="26" rx="14" ry="13" fill="#5A8040" vid="189"></ellipse>
+              <ellipse cx="26" cy="22" rx="11" ry="10" fill="#6A9A4A" vid="190"></ellipse>
+              <ellipse cx="26" cy="18" rx="8" ry="7" fill="#7DB055" vid="191"></ellipse>
+            </svg>
+          </div>
+          <span class="font-serif text-base font-bold" vid="192">Seedling</span>
         </div>
+
+        <p class="text-xs text-gray-500" vid="193">© 2026 Seedling Academy Inc. All rights reserved.</p>
+
+        <div class="flex items-center gap-4" vid="194">
+          <a href="#" class="text-xs text-gray-400 hover:text-white transition-colors" vid="195">Privacy</a>
+          <a href="#" class="text-xs text-gray-400 hover:text-white transition-colors" vid="196">Terms</a>
+          <a
+            href="#"
+            class="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-colors text-xs"
+            vid="197"
+            >𝕏</a
+          >
+          <a
+            href="#"
+            class="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-colors text-xs"
+            vid="198"
+            >in</a
+          >
+        </div>
+      </div>
     </footer>
-
-
-</body></html>
+  </body>
+</html>
